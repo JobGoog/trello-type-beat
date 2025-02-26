@@ -209,6 +209,7 @@ function showAddCardForm(container, columnId) {
 }
 
 
+
 document.addEventListener('dragover', (e) => {
   e.preventDefault();
   const target = e.target;
@@ -261,3 +262,19 @@ document.addEventListener('drop', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
   renderBoard();
 });
+
+const cursor = document.querySelector(".cursor"); // #1
+
+const mouseMove = function (e) { // #2
+  let x = e.clientX;
+  let y = e.clientY;
+  cursor.style.left = x + "px";
+  cursor.style.top = y + "px";
+};
+const mousehide = function (e) { // #2
+  cursor.style.left = '-9999px';
+  cursor.style.top = '-9999px';
+  };
+
+document.addEventListener("drag", mouseMove); // #3   
+document.addEventListener("mousemove", mousehide);
